@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gain Calculator - Homieux Media</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <header>
+    <a href="https://homieuxmedia.com" target="_blank">
+      <img src="https://homieuxmedia.com/wp-content/uploads/2024/02/homieux-logo-white.svg" 
+           alt="Homieux Media - AI Marketing Agency in Belgium" 
+           class="logo">
+    </a>
+    <div class="language-selector">
+      <button data-lang="fr" class="lang-btn active">FR</button>
+      <button data-lang="nl" class="lang-btn">NL</button>
+      <button data-lang="en" class="lang-btn">EN</button>
+    </div>
+  </header>
+
+  <main id="app">
+    <!-- Welcome Screen -->
+    <section id="welcome" class="screen active">
+      <h1 class="main-title" data-i18n="title">Combien d'euros laissez-vous sur la table chaque année ?</h1>
+      <p class="subtitle" data-i18n="subtitle">Calculez vos gains cachés en 60 secondes</p>
+      <button id="start-btn" class="cta-button" data-i18n="start_button">Démarrer</button>
+      
+      <div class="founder-message">
+        <p data-i18n="founder_message">Chez Homieux Media, on croit que chaque facility manager mérite de connaître le vrai potentiel de ses contrats. Cet outil est notre cadeau pour vous. — L'équipe Homieux Media, Bruxelles</p>
+      </div>
+    </section>
+
+    <!-- Step 1: Sites -->
+    <section id="step1" class="screen">
+      <div class="progress-bar">
+        <div class="progress" style="width: 33%"></div>
+      </div>
+      <h2 data-i18n="step1_title">Commençons : combien de sites gérez-vous ?</h2>
+      <div class="input-group">
+        <input type="range" min="1" max="50" value="10" class="slider" id="sites">
+        <div class="slider-value"><span id="sites-value">10</span> sites</div>
+      </div>
+      <div class="hint" data-i18n="step1_hint">Mes équipes perdent du temps sur des sites mal optimisés</div>
+      <button class="next-btn cta-button" data-i18n="next_button">Suivant</button>
+    </section>
+
+    <!-- Step 2: Energy -->
+    <section id="step2" class="screen">
+      <div class="progress-bar">
+        <div class="progress" style="width: 66%"></div>
+      </div>
+      <h2 data-i18n="step2_title">Quel est votre budget annuel énergie ?</h2>
+      <div class="input-group">
+        <input type="range" min="50000" max="500000" step="10000" value="200000" class="slider" id="energy">
+        <div class="slider-value">€<span id="energy-value">200.000</span></div>
+      </div>
+      <div class="hint" data-i18n="step2_hint">Mes factures énergie explosent sans que je comprenne pourquoi</div>
+      <button class="next-btn cta-button" data-i18n="next_button">Suivant</button>
+    </section>
+
+    <!-- Step 3: Maintenance -->
+    <section id="step3" class="screen">
+      <div class="progress-bar">
+        <div class="progress" style="width: 100%"></div>
+      </div>
+      <h2 data-i18n="step3_title">Quel est votre coût annuel de maintenance ?</h2>
+      <div class="input-group">
+        <input type="range" min="20000" max="300000" step="10000" value="100000" class="slider" id="maintenance">
+        <div class="slider-value">€<span id="maintenance-value">100.000</span></div>
+      </div>
+      <div class="hint" data-i18n="step3_hint">Ma marge fond sans que je comprenne pourquoi</div>
+      <button id="calculate-btn" class="cta-button" data-i18n="calculate_button">Calculer mes gains</button>
+    </section>
+
+    <!-- Results Screen -->
+    <section id="results" class="screen">
+      <div class="celebration" id="celebration"></div>
+      <h2 data-i18n="results_title">Voici ce que vous pourriez économiser :</h2>
+      <div class="result-value" id="result-value">~ 42.500 €</div>
+      
+      <div class="methodology">
+        <a href="#" id="methodology-link" data-i18n="methodology_link">Comment calculons-nous ?</a>
+        <div id="methodology-tooltip" class="tooltip" style="display:none;">
+          <p data-i18n="methodology_text">Basé sur l'analyse de 47 contrats GTB en Belgique, nos algorithmes croisent vos données avec les benchmarks sectoriels 2024.</p>
+        </div>
+      </div>
+
+      <div class="email-form">
+        <p data-i18n="email_prompt">Recevez votre rapport détaillé par email :</p>
+        <input type="email" id="user-email" placeholder="votre@email.com" required>
+        <button id="send-report" class="cta-button" data-i18n="send_report">Recevoir mon rapport PDF</button>
+        <p class="status" id="email-status"></p>
+      </div>
+
+      <div class="calendly-cta">
+        <p data-i18n="calendly_prompt">On en discute ?</p>
+        <p class="calendly-subtext" data-i18n="calendly_subtext">30 minutes d'échange, sans engagement, pour explorer ensemble vos leviers d'optimisation.</p>
+        <a href="https://calendly.com/homieuxmedia/discovery-call-gratuit-discutons-de-vos-defis" 
+           target="_blank" 
+           class="calendly-button"
+           data-i18n="calendly_button">Planifier mon appel</a>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
